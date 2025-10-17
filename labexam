@@ -1,0 +1,47 @@
+mport React, { useState } from "react";
+
+const ProductList = () => {
+  // Predefined array of products
+  const products = [
+    { name: "Notebook", price: 50, category: "Stationery" },
+    { name: "Pen", price: 10, category: "Stationery" },
+    { name: "Backpack", price: 800, category: "Bags" },
+    { name: "Laptop", price: 55000, category: "Electronics" },
+    { name: "Mouse", price: 500, category: "Electronics" },
+  ];
+
+  // State to hold selected category
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // Filter products based on selected category
+  const filteredProducts =
+    selectedCategory === "All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
+
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h2>🛍 Product Listing Page</h2>
+
+      {/* Category Filter Buttons */}
+      <div style={{ marginBottom: "15px" }}>
+        <button onClick={() => setSelectedCategory("All")}>All</button>
+        <button onClick={() => setSelectedCategory("Stationery")}>Stationery</button>
+        <button onClick={() => setSelectedCategory("Bags")}>Bags</button>
+        <button onClick={() => setSelectedCategory("Electronics")}>Electronics</button>
+      </div>
+
+      {/* Display Filtered Products */}
+      <ul>
+        {filteredProducts.map((product, index) => (
+          <li key={index}>
+            <strong>{product.name}</strong> — ₹{product.price} ({product.category})
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ProductList;
+
