@@ -1,4 +1,4 @@
-mport React, { useState } from "react";
+import React, { useState } from "react";
 
 const ProductList = () => {
   // Predefined array of products
@@ -44,4 +44,5 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
 
